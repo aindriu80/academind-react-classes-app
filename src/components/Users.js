@@ -10,6 +10,19 @@ class Users extends Component {
       more: 'Test',
     }
   }
+
+  // Introducing an Error - no users shown
+  componentDidUpdate() {
+    // try{
+    //   someCodeWhichMightFail()
+    // }catch(err){
+    //   // handle error
+    // }
+    if (this.props.users.length === 0) {
+      throw new Error('No users provided!')
+    }
+  }
+
   toggleUsersHandler() {
     // this.state.showUsers = false // Not the way to do it.
     this.setState((curState) => {
